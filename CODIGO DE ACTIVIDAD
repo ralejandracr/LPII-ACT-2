@@ -15,7 +15,7 @@ int main() {
     ret = SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &hEnv);
     ret = SQLSetEnvAttr(hEnv, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, 0);
 
-    // Asignar un gestor de conexi�n
+    // Asignar un gestor de conexión
     ret = SQLAllocHandle(SQL_HANDLE_DBC, hEnv, &hDbc);
 
     // Conectarse a la base de datos
@@ -24,7 +24,7 @@ int main() {
     if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
         cout << "Conectado a la base de datos exitosamente." << endl;
 
-        // Ejemplo de ejecuci�n de una consulta
+        // Ejemplo de ejecución de una consulta
         SQLHSTMT hStmt;
         ret = SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt);
 
@@ -57,23 +57,23 @@ int main() {
                 if (dir == "1") {
                     respuesta = "SI";
                 }
-                else
+                else 
                 {
                     respuesta = "NO";
                 }
+               
 
-
-                // Imprimir datos de la fila con alineaci�n
+                // Imprimir datos de la fila con alineación
                 cout << "| " << setw(14) << left << num_empleado
-                    << "| " << setw(39) << left << full_name
-                    << "| " << setw(15) << left << respuesta << " |" << endl;
+                     << "| " << setw(39) << left << full_name 
+                     << "| " << setw(15) << left << respuesta << " |" << endl;
             }
         }
 
-        // Imprimir l�nea final de la tabla
+        // Imprimir línea final de la tabla
         cout << "+---------------+----------------------------------------+-----------------+" << endl;
 
-        // Liberar el manejador de conexi�n
+        // Liberar el manejador de conexión
         SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
     }
     else {
